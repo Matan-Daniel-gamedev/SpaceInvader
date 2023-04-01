@@ -4,13 +4,16 @@
  * This component spawns the given laser-prefab whenever the player clicks a given key.
  * It also updates the "scoreText" field of the new laser.
  */
-public class LaserShooterWithCooldown: ClickSpawner {
+public class LaserShooterWithCooldown: ClickSpawner
+{
     [SerializeField] NumberField scoreField;
     [SerializeField] float cooldownTime = 0.5f;
     float nextTime = 0.0f;
 
-    protected override GameObject spawnObject() {
-        if(Time.time > nextTime) {
+    protected override GameObject spawnObject()
+    {
+        if (Time.time > nextTime)
+        {
             nextTime = Time.time + cooldownTime;
 
             GameObject newObject = base.spawnObject();  // base = super
@@ -22,7 +25,8 @@ public class LaserShooterWithCooldown: ClickSpawner {
 
             return newObject;
         }
-        else{
+        else
+        {
             return null;
         }
     }

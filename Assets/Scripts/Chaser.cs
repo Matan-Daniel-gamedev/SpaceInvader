@@ -12,7 +12,8 @@ public class Chaser : MonoBehaviour
     void Start () 
     {
         // if no target specified, assume the player
-        if (target == null) {
+        if (target == null)
+        {
             if (GameObject.FindWithTag ("Player")!=null)
             {
                 target = GameObject.FindWithTag ("Player").GetComponent<Transform>();
@@ -24,16 +25,18 @@ public class Chaser : MonoBehaviour
     // Update is called once per frame
     void Update () 
     {
-        if (target == null){
+        if (target == null)
+        {
             Debug.Log("No player found");
             return;
         }
         // face the target
         //transform.LookAt(target);
         //get the distance between the chaser and the target
-        float distance = Vector3.Distance(transform.position,target.position);
+        float distance = Vector3.Distance(transform.position, target.position);
         //so long as the chaser is farther away than the minimum distance, move towards it at rate speed.
-        if(distance > minDist){
+        if (distance > minDist)
+        {
             Vector3 pos = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             rb.MovePosition(pos);
         }
